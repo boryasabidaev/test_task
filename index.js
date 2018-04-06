@@ -7,7 +7,6 @@ var app = express();
 app.get('/', function (req, res) {
   let response = 'Hello, World!</p><a href="/env">Env</a>'
   res.send(response);
-  res.end();
 });
 
 app.get('/env', function (req, res) {
@@ -16,15 +15,14 @@ app.get('/env', function (req, res) {
   let filename = 'env.json';
 
   fs.writeFile(filename, envJsonStr, function(error){
-    if(error)
-      console.log("Couldn't write file");
+    if(error){
+      console.log('Error: Could not write file');
+      res.write('Error: Could not write file');
+    }
     res.writeHead(200, {"Content-Type" : "text/json"});
 
-    //res.send("Hello, World! Guys!");
     fs.createReadStream(filename).pipe(res);
   });
-  
-  
 });
 
 app.listen(8080, function () {

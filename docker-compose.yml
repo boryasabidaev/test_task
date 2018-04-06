@@ -1,15 +1,13 @@
-version: '0.1'
+version: "3"
 
 services:
-  app:
+  test_task:
+    image: test_task:0.1
     build: ./
     command: node index.js
     restart: always
     ports:
       - "8080:8080"
-    volumes:
-      - /home/boris/web/test/index.js:/usr/src/index.js
-      - /home/boris/web/test/package.json:/usr/src/package.json
-      - /home/boris/web/test/node_modules:/usr/src/node_modules
+
     environment:
       MYNAME: BORIS
