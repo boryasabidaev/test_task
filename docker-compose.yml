@@ -2,7 +2,7 @@ version: "3"
 
 services:
   test_task:
-    image: test_task:0.1
+    image: test:1
     build: ./
     command: node index.js
     restart: always
