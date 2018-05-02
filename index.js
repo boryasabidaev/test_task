@@ -12,17 +12,7 @@ app.get('/', function (req, res) {
 app.get('/env', function (req, res) {
   let env = process.env;
   let envJsonStr = JSON.stringify(env, null, 2);
-  let filename = 'env.json';
-
-  fs.writeFile(filename, envJsonStr, function(error){
-    if(error){
-      console.log('Error: Could not write file');
-      res.write('Error: Could not write file');
-    }
-    res.writeHead(200, {"Content-Type" : "text/json"});
-
-    fs.createReadStream(filename).pipe(res);
-  });
+  res.send(envJsonStr);
 });
 
 app.listen(8080, function () {

@@ -10,7 +10,6 @@ RUN npm install
 
 EXPOSE 8080
 
-ENV MYNAME Boris
-ENV my_env_var somevalue
+ENV MY_ENV_VAR somevalue
 
 CMD ["node","index.js"]
